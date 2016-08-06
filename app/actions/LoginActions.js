@@ -33,6 +33,33 @@ export function login(model) {
   }
 }
 
+export function logout(){
+  return function(dispatch) {
+    fetch('http://localhost:3000/logout', {
+      method: 'POST'
+    })
+    .then((response) => response.json())
+    .then(function(responseJson){
+      if(responseJson.success){
+        console.log('LOGOUT SUCCESS')
+        dispatch({
+          type: LoginConstants.LOGOUT
+        })
+      }
+      else {
+        throw responseJson.err;
+      }
+    })
+    .catch(function(err){
+      console.log('LOGOUT ERROR:', err);
+      dispatch({
+        type: ErrorConstants.APPLICATION_ERROR,
+        err: err
+      })
+    })
+  }
+}
+
 export function resetError(){
   return {
     type: ErrorConstants.RESET

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableHighlight, Alert, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import Button from 'react-native-button';
 
 import * as LoginActions from '../actions/LoginActions';
 
@@ -12,6 +13,13 @@ class Login extends Component {
       username: '',
       password: ''
     };
+  }
+
+  componentWillMount() {
+    //If already logged in, log out
+    if(this.props.loggedIn){
+      Actions.pop();
+    }
   }
 
   render() {
@@ -28,9 +36,9 @@ class Login extends Component {
           onChangeText={(text)=>this.setState({password: text})}
           style={{height: 35}}
         />
-        <TouchableHighlight onPress={this._loginPressed.bind(this)}>
-          <Text>Login</Text>
-        </TouchableHighlight>
+        <Button onPress={()=>this._loginPressed()}>
+          Login
+        </Button>
       </View>
     )
   }
@@ -47,6 +55,7 @@ class Login extends Component {
 
     // If currently logged in, move to Main Page
     if(nextProps.loggedIn){
+      Actions.main();
       Actions.pop();
     }
   }

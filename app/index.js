@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import Login from './components/Login';
 import Main from './components/Main';
+import Drawer from './components/Drawer';
 
 import createStore from './createStore';
 
@@ -16,8 +17,12 @@ export default class App extends Component {
         <Router>
           <Scene key="modal" component={Modal}>
             <Scene key="root">
-              <Scene key="main" title="Main" initial={true} component={Main}></Scene>
-              <Scene key="login" direction="vertical" schema="modal" hideNavBar={true} component={Login}></Scene>
+              <Scene key="drawer" component={Drawer} open={false} >
+                <Scene key="main-container">
+                  <Scene key="main" title="Well Sense" initial={true} component={Main} />
+                </Scene>
+              </Scene>
+              <Scene key="login" direction="vertical" schema="modal" hideNavBar={true} component={Login} />
             </Scene>
           </Scene>
         </Router>
