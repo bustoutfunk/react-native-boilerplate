@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import Login from './components/Login';
 import Main from './components/Main';
 import Drawer from './components/Drawer';
+import WellData from './components/WellData';
 
 import createStore from './createStore';
 
@@ -18,8 +19,9 @@ export default class App extends Component {
           <Scene key="modal" component={Modal}>
             <Scene key="root">
               <Scene key="drawer" component={Drawer} open={false} >
-                <Scene key="main-container">
-                  <Scene key="main" title="Well Sense" initial={true} component={Main} />
+                <Scene key="container">
+                  <Scene key="main" title="Well Sense" initial={true} component={Main} type="replace" />
+                  <Scene key="welldata" title="Historical Usage" component={WellData} type="replace" />
                 </Scene>
               </Scene>
               <Scene key="login" direction="vertical" schema="modal" hideNavBar={true} component={Login} />

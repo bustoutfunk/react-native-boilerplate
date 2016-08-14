@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-class App extends Component {
+class WellSense extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('App', () => App);
+WellSenseRegistry.registerComponent('WellSense', () => WellSense);

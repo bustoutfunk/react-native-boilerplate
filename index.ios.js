@@ -14,6 +14,6 @@ import {
   View
 } from 'react-native';
 
-import App from './app/index'
+import WellSense from './app/index'
 
-AppRegistry.registerComponent('App', () => App);
+AppRegistry.registerComponent('WellSense', () => WellSense);

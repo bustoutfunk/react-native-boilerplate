@@ -1,4 +1,4 @@
-package com.app;
+package com.wellsense;
 
 import android.app.Application;
 import android.util.Log;
